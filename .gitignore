@@ -1,0 +1,28 @@
+# Secrets
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+.vercel/
+
+# Worker runtime data
+worker/buffer/
+worker/clips/
+worker/tmp/
+*.log
+
+# OS
+Thumbs.db
+.DS_Store

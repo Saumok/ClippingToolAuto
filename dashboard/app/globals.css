@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* ───────────────────────── GTA VI — Vice City theme ───────────────────────── */
+@theme {
+  --color-void: #07030f;
+  --color-night: #0d0718;
+  --color-dusk: #170a2b;
+  --color-panel: #140a24;
+
+  --color-neon-pink: #ff2e9a;
+  --color-neon-magenta: #ff3d7f;
+  --color-neon-cyan: #19e3ff;
+  --color-neon-purple: #9d4bff;
+  --color-sunset: #ff8a3d;
+  --color-gold: #ffd23f;
+
+  --color-ink: #f6edff;
+  --color-muted: #b4a3cf;
+
+  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+* {
+  border-color: color-mix(in srgb, var(--color-neon-purple) 22%, transparent);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, color-mix(in srgb, var(--color-neon-pink) 22%, transparent), transparent 60%),
+    radial-gradient(1000px 700px at -10% 10%, color-mix(in srgb, var(--color-neon-purple) 24%, transparent), transparent 55%),
+    radial-gradient(900px 500px at 50% 120%, color-mix(in srgb, var(--color-neon-cyan) 14%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--color-night), var(--color-void));
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* subtle scanline grid, Vice City synthwave feel */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-neon-cyan) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-neon-cyan) 7%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+  opacity: 0.5;
+}
+
+/* ───────────────────────── utilities ───────────────────────── */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(100deg, var(--color-gold), var(--color-sunset) 35%, var(--color-neon-pink) 70%, var(--color-neon-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .neon-pink { box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-neon-pink) 60%, transparent), 0 0 24px -4px var(--color-neon-pink); }
+  .neon-cyan { box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-neon-cyan) 55%, transparent), 0 0 22px -5px var(--color-neon-cyan); }
+  .glow-pink { text-shadow: 0 0 18px color-mix(in srgb, var(--color-neon-pink) 70%, transparent); }
+  .glow-cyan { text-shadow: 0 0 18px color-mix(in srgb, var(--color-neon-cyan) 70%, transparent); }
+  .glass {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-panel) 86%, transparent), color-mix(in srgb, var(--color-void) 80%, transparent));
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--color-neon-purple) 26%, transparent);
+  }
+  .card {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-panel) 86%, transparent), color-mix(in srgb, var(--color-void) 80%, transparent));
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--color-neon-purple) 26%, transparent);
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: "";
+    position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: linear-gradient(130deg, color-mix(in srgb, var(--color-neon-pink) 10%, transparent), transparent 40%);
+  }
+}
+
+::selection { background: var(--color-neon-pink); color: #11021a; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-neon-pink), var(--color-neon-purple));
+  border-radius: 99px;
+}
+::-webkit-scrollbar-track { background: var(--color-void); }

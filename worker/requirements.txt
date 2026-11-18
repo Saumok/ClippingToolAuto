@@ -1,0 +1,12 @@
+# ClipPilot worker — M0 foundation deps (runnable now).
+# Heavy ML deps (faster-whisper, torch, ultralytics, mediapipe) are added in M1
+# when we build the editing pipeline, to keep the foundation fast to install/verify.
+
+fastapi==0.115.*
+uvicorn[standard]==0.32.*
+pydantic-settings==2.*
+httpx==0.27.*
+supabase==2.*
+yt-dlp>=2026.10.26
+chat-downloader==0.2.*
+python-dotenv==1.*
